@@ -5,8 +5,9 @@ $toUninstall = @(
     @{Name='Windows Terminal'; ID='Microsoft.WindowsTerminal'},
     @{Name='Steam'; ID='Valve.Steam'},
     @{Name='NordVPN'; ID='NordVPN.NordVPN'},
-    @{Name='Go Lang'; ID='GoLang.Go'}
-    @{Name='Microsoft Visual Studio Code'; ID='Microsoft.VisualStudioCode'}
+    @{Name='Go Lang'; ID='GoLang.Go'},
+    @{Name='Microsoft Visual Studio Code'; ID='Microsoft.VisualStudioCode'},
+    @{Name='Mozilla Firefox (x64 pt-BR)'; ID='Mozilla Firefox 99.0.1 (x64 pt-BR)'}
 )
 
 foreach ($software in $toUninstall)
