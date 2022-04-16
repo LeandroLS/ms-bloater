@@ -6,5 +6,5 @@ Simple custom script to install "necessary" softwares in your MS Windows 10+
 2. Run `.\"bloater.ps1"`
 
 ### Requiriments
-Windows 10+
-winget installed
+- Windows 10+  
+- winget installed
