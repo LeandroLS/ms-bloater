@@ -7,3 +7,4 @@ Simple custom script to install "necessary" softwares in your MS Windows 10+
 
 ### Requiriments
 Windows 10+
+winget installed
