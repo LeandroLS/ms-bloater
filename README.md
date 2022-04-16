@@ -7,4 +7,5 @@ Simple custom script to install "necessary" softwares in your MS Windows 10+
 3. After you finish, run `Set-ExecutionPolicy Restricted -Scope CurrentUser -Force;` in PowerShell to restore execution policy.
 
 ### Requiriments
-Windows 10+
+- Windows 10+  
+- winget installed
