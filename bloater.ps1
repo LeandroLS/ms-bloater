@@ -26,4 +26,16 @@ foreach ($software in $toUninstall)
     }
 }
 
-Write-Output "Finished."
+Write-Output "Finished instalation script."
+
+$response = Read-Host "Do you want to schedule Clear Recycle Bin ? [Y]Yes [N]No"
+if ($response -ne "Y" -and $response -ne "N") {
+    Write-Output "Invalid Option. Use Y or N"
+}
+
+if($response -eq "Y"){
+    Write-Output "Trying to Schedule Task..."
+    $action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument '-WindowStyle Hidden Clear-RecycleBin -Force'
+    $trigger = New-ScheduledTaskTrigger -Daily -At 9pm
+    Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "Clear Recycle Bin" -Description "Daily clear recycle bin"
+}
