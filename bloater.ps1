@@ -28,14 +28,34 @@ foreach ($software in $toUninstall)
 
 Write-Output "Finished instalation script."
 
-$response = Read-Host "Do you want to schedule Clear Recycle Bin ? [Y]Yes [N]No"
-if ($response -ne "Y" -and $response -ne "N") {
-    Write-Output "Invalid Option. Use Y or N"
-}
+$toReschedule = @(
+    @{
+        Name='Clear Recycle Bin';
+        Description='Daily clear recycle bin';
+        Trigger=New-ScheduledTaskTrigger -Daily -At 8pm; Action=New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument '-WindowStyle Hidden Clear-RecycleBin -Force'
+    },
+    @{
+        Name='Clear Downloads Folder';
+        Description='Daily clear downloads folder';
+        Trigger=New-ScheduledTaskTrigger -Daily -At 7:50pm; Action=New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument 'Set-Location -Path $HOME\Downloads; Remove-Item * -Recurse -Force'
+    }
+)
 
-if($response -eq "Y"){
-    Write-Output "Trying to Schedule Task..."
-    $action = New-ScheduledTaskAction -Execute 'Powershell.exe' -Argument '-WindowStyle Hidden Clear-RecycleBin -Force'
-    $trigger = New-ScheduledTaskTrigger -Daily -At 9pm
-    Register-ScheduledTask -Action $action -Trigger $trigger -TaskName "Clear Recycle Bin" -Description "Daily clear recycle bin"
+Write-Output "Start of scheduling tasks script"
+
+foreach ($task in $toReschedule){
+
+    $name = $task.Name
+   
+    $response = Read-Host "Do you want to schedule $name ? [Y]Yes [N]No"
+    
+    if ($response -ne "Y" -and $response -ne "N") {
+        Write-Output "Invalid Option. Use Y or N"
+    }
+
+    if($response -eq "Y"){
+        Write-Output "Trying to Schedule Task..."
+        Register-ScheduledTask -Action $task.Action -Trigger $task.Trigger -TaskName $task.Name -Description $task.Description
+    }
+
 }
