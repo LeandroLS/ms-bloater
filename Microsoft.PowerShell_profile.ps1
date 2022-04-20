@@ -1,0 +1,1 @@
+$CODING = "$env:USERPROFILE/Documents/CodingProjects"
