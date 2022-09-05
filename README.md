@@ -1,4 +1,4 @@
-# ms-unbloater
+# ms-bloater
 Simple custom script to install "necessary" softwares in your MS Windows 10+
 
 ### How to use
