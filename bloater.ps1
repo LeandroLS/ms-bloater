@@ -1,4 +1,4 @@
-$toUninstall = @(
+$toInstall = @(
     @{Name='Discord'; ID='Discord.Discord'},
     @{Name='Docker Desktop'; ID='Docker.DockerDesktop'},
     @{Name='Git'; ID='Git.Git'},
@@ -10,7 +10,7 @@ $toUninstall = @(
     @{Name='Mozilla Firefox (x64 pt-BR)'; ID='Mozilla Firefox 99.0.1 (x64 pt-BR)'}
 )
 
-foreach ($software in $toUninstall)
+foreach ($software in $toInstall)
 {
     $name = $software.Name
     $id = $software.ID
